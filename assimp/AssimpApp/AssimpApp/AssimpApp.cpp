@@ -3,10 +3,21 @@
 
 #include <iostream>
 #include <assimp/ai_assert.h>
+#include <assimp/Importer.hpp>
+
+#include "AssimpHelper.h"
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    Assimp::Importer importer;
+    std::string filePath(R"(C:\Users\zrq\Desktop\Hongwa\gltf\gltf2.0\glTF-Sample-Models-main\2.0\Box\glTF\Box.gltf)");
+
+    const aiScene* scene = AssimpHelper::ImportScene(importer, filePath);
+    AssimpHelper::PrintScene(scene);
+
+    aiNode* rootNode = scene->mRootNode;
+    AssimpHelper::PrintNodes(importer, rootNode);
+
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
