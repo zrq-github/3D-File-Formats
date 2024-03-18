@@ -57,6 +57,12 @@ void AssimpHelper::PrintNodes(Assimp::Importer& importer, aiNode* node)
 
 void AssimpHelper::PrintNode(Assimp::Importer& importer,aiNode* node)
 {
+    if(node->mMetaData)
+    {
+        aiString* key = node->mMetaData->mKeys;
+        std::cout << "key" << key->C_Str() << std::endl;
+    }
+
     aiString nodeName = node->mName;
     std::cout << "nodeName: " << nodeName.C_Str() << std::endl;
 
